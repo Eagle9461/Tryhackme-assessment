@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 
-export const useTaskModalHook = () => {
+const useTaskModalHook = () => {
     const modalStatus = useAppSelector(state => state.modalStatus.modalStatus);
 
     const dispatch = useAppDispatch();
@@ -33,3 +33,5 @@ export const useTaskModalHook = () => {
 
     return {isOpen, register, handleSubmit, onSubmit, dispatch, errors}
 }
+
+export default useTaskModalHook;

@@ -1,6 +1,4 @@
-export interface IBaseToogleProps {
-  register: any;
-}
+import { IBaseToogleProps } from "../../types";
 
 const BaseToogle: React.FC<IBaseToogleProps> = ({ register }) => {
   return (

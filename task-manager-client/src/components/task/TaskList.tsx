@@ -1,6 +1,8 @@
-import { TaskItem } from ".";
+import { TaskItem } from "..";
+import { ITaskListProps } from "../../types";
 
-const TaskList: React.FC = () => {
+const TaskList: React.FC<ITaskListProps> = ({ tasks }) => {
+  console.log(tasks);
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -21,7 +23,9 @@ const TaskList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          <TaskItem />
+          {tasks.map((task) => (
+            <TaskItem key={task.id} task={task} />
+          ))}
         </tbody>
       </table>
     </div>

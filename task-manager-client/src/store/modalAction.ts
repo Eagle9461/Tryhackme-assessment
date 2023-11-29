@@ -1,5 +1,5 @@
 import modalSlice from "./modalSlice";
-import { IModalStatusWithId } from "./constants";
+import { IModalStatusWithId } from "../types";
 
 const modalStatusActions = modalSlice.actions;
 

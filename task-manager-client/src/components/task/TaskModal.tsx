@@ -1,11 +1,9 @@
 import Modal from "react-modal";
 import OutsideClickHandler from "react-outside-click-handler";
-import BaseInputField from "./BaseInputField";
-import BaseTextarea from "./BaseTextarea";
-import BaseToogle from "./BaseToogle";
-import { useTaskModalHook } from "./useTaskModalHook";
-import { changeModalStatus } from "../store";
-import { TaskModalStatus } from "../store/constants";
+import { BaseInputField, BaseTextarea, BaseToogle } from "../common";
+import { useTaskModalHook } from "./hooks";
+import { changeModalStatus } from "../../store";
+import { TaskModalStatus } from "../../types";
 
 const TaskModal: React.FC = () => {
   const { isOpen, register, handleSubmit, onSubmit, dispatch, errors } =

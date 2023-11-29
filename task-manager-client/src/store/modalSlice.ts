@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IModalStatusWithId, TaskModalStatus } from "./constants";
+import { IModalStatusWithId, TaskModalStatus } from "../types";
 
 const initialModalStatus: IModalStatusWithId = {
     modalStatus: TaskModalStatus.CLOSE,

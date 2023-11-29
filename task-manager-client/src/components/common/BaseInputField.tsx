@@ -1,13 +1,4 @@
-export interface IBaseInputFieldProps {
-  type: string;
-  id: string;
-  placeholder: string;
-  autoFocus: boolean;
-  required: boolean;
-  label: string;
-  register: any;
-  error: string | undefined;
-}
+import { IBaseInputFieldProps } from "../../types";
 
 const BaseInputField: React.FC<IBaseInputFieldProps> = ({
   type,

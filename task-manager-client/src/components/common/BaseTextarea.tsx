@@ -1,12 +1,4 @@
-export interface IBaseTextarea {
-  id: string;
-  placeholder: string;
-  row: number;
-  label: string;
-  required: boolean;
-  register: any;
-  error: string | undefined;
-}
+import { IBaseTextarea } from "../../types";
 
 const BaseTextarea: React.FC<IBaseTextarea> = ({
   id,
