@@ -1,0 +1,44 @@
+export interface IBaseInputFieldProps {
+  type: string;
+  id: string;
+  placeholder: string;
+  autoFocus: boolean;
+  required: boolean;
+  label: string;
+  register: any;
+  error: string | undefined;
+}
+
+const BaseInputField: React.FC<IBaseInputFieldProps> = ({
+  type,
+  id,
+  placeholder,
+  autoFocus,
+  required,
+  label,
+  register,
+  error,
+}) => {
+  return (
+    <div className="mb-5">
+      <label
+        htmlFor={id}
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
+        {label}
+      </label>
+      <input
+        type={type}
+        id={id}
+        {...register("title")}
+        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+        required={required}
+      />
+      {<p className="text-start text-xs italic text-red-500 my-4"> {error}</p>}
+    </div>
+  );
+};
+
+export default BaseInputField;
