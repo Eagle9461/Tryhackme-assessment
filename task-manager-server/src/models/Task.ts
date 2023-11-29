@@ -1,15 +1,12 @@
-import mongoose, { Document } from 'mongoose';
-
-interface Task extends Document {
-  title: string;
-  description: string;
-  status: string;
-}
+import mongoose from 'mongoose';
+import { ITask } from '../types';
 
 const taskSchema = new mongoose.Schema({
   title: String,
-  description: String,
-  status: String,
+  desc: String,
+  taskStatus: Boolean,
 });
 
-export default mongoose.model<Task>('Task', taskSchema);
+const Task = mongoose.model<ITask>('Task', taskSchema);
+
+export default Task;
