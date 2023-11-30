@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import {TaskRepository} from '../repositories';
+import { TaskService } from '../service';
 
 export async function createTask(req: Request, res: Response) {
     try {
@@ -16,8 +17,19 @@ export async function createTask(req: Request, res: Response) {
 
 export async function getAllTasks(req: Request, res: Response) {
     try {
-        const tasks = await TaskRepository.findAll();
-        res.status(200).send(tasks);
+        const page = parseInt(req.query.page as string) || 1;
+        const limit = parseInt(req.query.limit as string) || 10;
+
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+
+        const { paginatedData, nextPage } = await TaskService.fetchPaginatedData(page, limit);
+
+        
+        res.status(200).send({
+          data: paginatedData,
+          pageNumber: nextPage
+        });
     } catch (error) {
       if (error instanceof Error) {
           res.status(500).send({ message: error.message });
