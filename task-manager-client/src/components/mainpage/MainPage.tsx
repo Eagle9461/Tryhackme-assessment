@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { MainHeader } from ".";
-import { TaskList, TaskModal } from "..";
+import { ConfirmModal, TaskList, TaskModal } from "..";
 
 const MainPage: React.FC = () => {
   return (
@@ -10,6 +10,7 @@ const MainPage: React.FC = () => {
         <TaskList />
       </Suspense>
       <TaskModal />
+      <ConfirmModal />
     </div>
   );
 };

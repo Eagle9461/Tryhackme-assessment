@@ -1,6 +1,9 @@
-import { ITaskItemProps } from "../../types";
+import { changeModalStatus, useAppDispatch } from "../../store";
+import { ITaskItemProps, TaskModalStatus } from "../../types";
 
 const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -26,6 +29,14 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
           </a>
           <a
             href="#"
+            onClick={() =>
+              dispatch(
+                changeModalStatus({
+                  modalStatus: TaskModalStatus.REMOVE,
+                  currentId: task._id as string,
+                })
+              )
+            }
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             Delete
