@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch, useAppSelector } from "../../../store";
+import { changeModalStatus, useAppDispatch, useAppSelector } from "../../../store";
 import useTaskCreateHook from "./useTaskCreateHook";
+import { TaskModalStatus } from "../../../types";
 
 const useTaskModalHook = () => {
     const modalStatus = useAppSelector(state => state.modalStatus.modalStatus);
@@ -32,8 +33,13 @@ const useTaskModalHook = () => {
 
     const onSubmit: SubmitHandler<ValidationSchema> = async (data: ValidationSchema) => {
         await mutation.mutateAsync({...data, _id: null});
-    };
-
+        dispatch(
+            changeModalStatus({
+              modalStatus: TaskModalStatus.CLOSE,
+              currentId: undefined,
+            })
+          )   
+        };
     return {isOpen, register, handleSubmit, onSubmit, dispatch, errors}
 }
 
