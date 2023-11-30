@@ -11,7 +11,7 @@ export interface IModalStatusWithId {
 }
 
 export interface ITask {
-  _id: string;
+  _id: string | null;
   title: string;
   desc: string;
   taskStatus: boolean;

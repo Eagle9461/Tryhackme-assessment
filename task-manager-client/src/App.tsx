@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import { MainPage } from "./components/mainpage";
 import {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <ToastContainer />
         <QueryErrorResetBoundary>
           {({ reset }) => (
             <ErrorBoundary

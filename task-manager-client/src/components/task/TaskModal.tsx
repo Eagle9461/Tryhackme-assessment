@@ -49,7 +49,7 @@ const TaskModal: React.FC = () => {
           </div>
           <BaseInputField
             type="text"
-            id="title"
+            _id="title"
             placeholder="Enter the task title."
             autoFocus={true}
             required={true}
@@ -58,7 +58,7 @@ const TaskModal: React.FC = () => {
             error={errors.title?.message}
           />
           <BaseTextarea
-            id="desc"
+            _id="desc"
             placeholder="Enter the task description."
             row={5}
             required={true}

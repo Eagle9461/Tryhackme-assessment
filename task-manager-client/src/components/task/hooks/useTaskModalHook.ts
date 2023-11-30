@@ -2,11 +2,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "../../../store";
+import useTaskCreateHook from "./useTaskCreateHook";
 
 const useTaskModalHook = () => {
     const modalStatus = useAppSelector(state => state.modalStatus.modalStatus);
 
     const dispatch = useAppDispatch();
+
+    const mutation = useTaskCreateHook();
 
     const isOpen = modalStatus === "open" || modalStatus === "edit" ? true : false;
 
@@ -28,7 +31,7 @@ const useTaskModalHook = () => {
     });
 
     const onSubmit: SubmitHandler<ValidationSchema> = async (data: ValidationSchema) => {
-        console.log(data);
+        await mutation.mutateAsync({...data, _id: null});
     };
 
     return {isOpen, register, handleSubmit, onSubmit, dispatch, errors}
