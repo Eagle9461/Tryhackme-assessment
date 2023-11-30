@@ -7,7 +7,7 @@ export enum TaskModalStatus {
 
 export interface IModalStatusWithId {
   modalStatus: TaskModalStatus;
-  currentId: number | undefined;
+  currentId: string | undefined;
 }
 
 export interface ITask {

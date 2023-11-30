@@ -12,3 +12,8 @@ export const createTask = async (newTask: ITask) => {
   const response = await axios.post(baseUrl, newTask);
   return response.data;
 };
+
+export const deleteTask = async (_id: string) => {
+  const response = await axios.delete(`${baseUrl}/${_id}`);
+  return response.data;
+};

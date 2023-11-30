@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ErrorBoundary } from "react-error-boundary";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const queryClient = new QueryClient();
