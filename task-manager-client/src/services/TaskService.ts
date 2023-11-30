@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { ITask } from '../types'; 
+import { IPaginatedTasks, ITask } from '../types'; 
 
 const baseUrl = 'http://localhost:3001/api/tasks/';
 
-export const fetchTasks = async () => {
-  const response = await axios.get(baseUrl);
+export const fetchTasks = async (page: number, limit: number = 10): Promise<IPaginatedTasks> => {
+  const response = await axios.get(baseUrl, {params: { page, limit }});
   return response.data;
 };
 
