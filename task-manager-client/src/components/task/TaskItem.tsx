@@ -15,17 +15,14 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
         </th>
         <td className="px-6 py-4">{task.desc}</td>
         <td className="px-6 py-4">
-          {task.taskStatus ? (
-            <div className="flex items-center">
-              <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{" "}
-              ToDo
-            </div>
-          ) : (
-            <div className="flex items-center">
-              <div className="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>{" "}
-              Done
-            </div>
-          )}
+          <div className="flex items-center">
+            <div
+              className={`h-2.5 w-2.5 rounded-full me-2 ${
+                task.taskStatus ? "bg-green-500" : "bg-red-500"
+              }`}
+            ></div>
+            {task.taskStatus ? "ToDo" : "Done"}
+          </div>
         </td>
         <td className="px-6 py-4 flex gap-5">
           <a
