@@ -4,12 +4,16 @@ import cors from 'cors';
 import {connectDB} from './config';
 import {router} from './routes';
 import { errorHandlerMiddleware } from './middleware';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cors());
 
 connectDB();

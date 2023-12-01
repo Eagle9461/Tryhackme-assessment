@@ -1,8 +1,16 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGO_URI || 'mongodb+srv://web_dev:kyXo82h1gwzJkPcU@db-task.ykdbksa.mongodb.net/';
+    const mongoURI = process.env.MONGO_URI || 'mongodb+srv://user1:password111@cluster0.9ecofvk.mongodb.net/';
+
+    if (!mongoURI) {
+      console.error('MongoDB URI not found in environment variables');
+      return;
+    }
 
     await mongoose.connect(mongoURI);
 
