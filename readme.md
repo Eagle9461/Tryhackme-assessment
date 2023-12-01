@@ -17,8 +17,9 @@ Welcome to the Task Manager app! This project comprises both the client and serv
 ## Features
 
 - **Task Creation:** Easily create and manage your tasks.
-- **React Query:** Utilizes `react-query` for efficient data fetching and caching.
+- **React Query:** Utilizes `react-query` for efficient data fetching and caching as well as suspense.
 - **Form Handling:** Implements `react-hook-form` for robust form handling.
+- **Error Handling:** Utilizes `react-error-boundary` for error handling.
 - **State Management:** Utilizes `redux-toolkit` and `react-redux` for state management.
 
 ## Prerequisites
