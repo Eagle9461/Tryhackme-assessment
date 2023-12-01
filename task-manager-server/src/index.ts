@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import {connectDB} from './config';
 import {router} from './routes';
+import { errorHandlerMiddleware } from './middleware';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,17 +16,7 @@ connectDB();
 
 app.use('/api/tasks', router);
 
-app.use(
-  (
-    err: any,
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction,
-  ) => {
-    console.error(err.stack);
-    res.status(500).send("Something went wrong!");
-  },
-);
+app.use(errorHandlerMiddleware);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
