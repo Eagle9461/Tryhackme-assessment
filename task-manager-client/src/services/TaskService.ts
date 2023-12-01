@@ -13,7 +13,17 @@ export const createTask = async (newTask: ITask) => {
   return response.data;
 };
 
+export const getTask = async (_id: string) => {
+  const response = await axios.get(`${baseUrl}${_id}`);
+  return response.data;
+};
+
+export const updateTask = async ({_id, updatedTask}: {_id: string, updatedTask: ITask}) => {
+  const response = await axios.put(`${baseUrl}${_id}`, updatedTask);
+  return response.data;
+};
+
 export const deleteTask = async (_id: string) => {
-  const response = await axios.delete(`${baseUrl}/${_id}`);
+  const response = await axios.delete(`${baseUrl}${_id}`);
   return response.data;
 };

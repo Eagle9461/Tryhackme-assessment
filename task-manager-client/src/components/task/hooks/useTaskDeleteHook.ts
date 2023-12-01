@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteTask } from "../../../services";
 import { toast } from "react-toastify";
+import { deleteTask } from "../../../services";
 
 const useTaskDeleteHook = () => {
 
@@ -17,7 +17,7 @@ const useTaskDeleteHook = () => {
             });
             queryClient.invalidateQueries({queryKey: ['getAllTasks']});
         },
-        onError: (error:any) => {
+        onError: (error: any) => {
             toast.error(`Error: ${error?.response?.data?.message}`, {
                 hideProgressBar: true,
                 autoClose: 5000,
