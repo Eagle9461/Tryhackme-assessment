@@ -23,6 +23,14 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
         <td className="px-6 py-4 flex gap-5">
           <a
             href="#"
+            onClick={() =>
+              dispatch(
+                changeModalStatus({
+                  modalStatus: TaskModalStatus.EDIT,
+                  currentId: task._id as string,
+                })
+              )
+            }
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             Edit

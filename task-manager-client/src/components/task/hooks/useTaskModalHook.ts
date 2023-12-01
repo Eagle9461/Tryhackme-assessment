@@ -1,16 +1,22 @@
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { changeModalStatus, useAppDispatch, useAppSelector } from "../../../store";
-import useTaskCreateHook from "./useTaskCreateHook";
+import { useTaskCreateHook, useTaskUpdateHook, useGetTaskHook } from "."; 
 import { TaskModalStatus } from "../../../types";
 
 const useTaskModalHook = () => {
     const modalStatus = useAppSelector(state => state.modalStatus.modalStatus);
-
+    const currentId = useAppSelector(state => state.modalStatus.currentId) as string;
     const dispatch = useAppDispatch();
 
-    const mutation = useTaskCreateHook();
+    const createMutation = useTaskCreateHook();
+    const updateMutation = useTaskUpdateHook();
+    
+    const isEdit: boolean = modalStatus === "edit" ? true : false;
+
+    const { data: editabletask }  = useGetTaskHook(currentId, isEdit);
 
     const isOpen = modalStatus === "open" || modalStatus === "edit" ? true : false;
 
@@ -22,23 +28,37 @@ const useTaskModalHook = () => {
 
     type ValidationSchema = z.infer<typeof validationSchema>;
 
-    const {register, handleSubmit, formState: {errors}} = useForm<ValidationSchema>({
-        defaultValues: {
-            title: "",
-            desc: "",
-            taskStatus: false
-        },
+    const defaultValues = {
+        title: "",
+        desc: "",
+        taskStatus: false,
+    }
+
+    const {register, handleSubmit, reset, formState: {errors}} = useForm<ValidationSchema>({
+        defaultValues: defaultValues,
         resolver: zodResolver(validationSchema)
     });
 
+    useEffect(() => {
+        if (!currentId) {
+          reset(defaultValues);
+        } else if (editabletask)
+          reset({
+            title: editabletask.title,
+            desc: editabletask.desc,
+            taskStatus: editabletask.taskStatus,
+          });
+      }, [editabletask, currentId]);
+
     const onSubmit: SubmitHandler<ValidationSchema> = async (data: ValidationSchema) => {
-        await mutation.mutateAsync({...data, _id: null});
+        isEdit ? await updateMutation.mutateAsync({updatedTask: {...data, _id: null}, _id: currentId}) : await createMutation.mutateAsync({...data, _id: null});
         dispatch(
             changeModalStatus({
               modalStatus: TaskModalStatus.CLOSE,
               currentId: undefined,
             })
-          )   
+          );
+          reset(defaultValues);
         };
     return {isOpen, register, handleSubmit, onSubmit, dispatch, errors}
 }
