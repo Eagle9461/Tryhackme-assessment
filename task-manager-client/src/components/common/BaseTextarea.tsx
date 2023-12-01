@@ -11,10 +11,7 @@ const BaseTextarea: React.FC<IBaseTextarea> = ({
 }) => {
   return (
     <div className="mb-5">
-      <label
-        htmlFor={_id}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >
+      <label htmlFor={_id} className="mb-4 text-gray-500 dark:text-gray-300">
         {label}
       </label>
       <textarea

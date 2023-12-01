@@ -12,7 +12,7 @@ const ConfirmModal: React.FC = () => {
       isOpen={isOpen}
       contentLabel="Task Modal"
       ariaHideApp={false}
-      className="modal-container bg-gray-800 relative"
+      className="modal-container dark:bg-gray-800 relative"
       overlayClassName="modal-overlay"
     >
       <OutsideClickHandler

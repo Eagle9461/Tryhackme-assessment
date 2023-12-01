@@ -18,7 +18,7 @@ const MainHeader: React.FC = () => {
               })
             )
           }
-          className="bg-gray-50 dark:bg-gray-700 dark:text-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
+          className="text-gray-500 bg-white p-2 rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
         >
           Create New Task
         </button>

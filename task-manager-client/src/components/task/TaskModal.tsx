@@ -14,7 +14,7 @@ const TaskModal: React.FC = () => {
       isOpen={isOpen}
       contentLabel="Task Modal"
       ariaHideApp={false}
-      className="modal-container bg-gray-800 relative"
+      className="modal-container dark:bg-gray-800 relative"
       overlayClassName="modal-overlay"
     >
       <OutsideClickHandler
@@ -43,7 +43,10 @@ const TaskModal: React.FC = () => {
             &#10006;
           </button>
           <div className="mb-5">
-            <h1 className="flex justify-center font-bold text-white text-3xl">
+            <h1
+              className="flex justify-center font-bold mb-4 text-gray-500 dark:text-gray-300
+text-3xl"
+            >
               Create a new task
             </h1>
           </div>
@@ -72,9 +75,9 @@ const TaskModal: React.FC = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="w-full text-gray-500 bg-white p-2 rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
             >
-              Create new task
+              Create New Task
             </button>
           </div>
         </form>

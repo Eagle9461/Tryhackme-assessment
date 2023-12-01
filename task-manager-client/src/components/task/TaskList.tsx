@@ -10,7 +10,7 @@ const TaskList: React.FC = () => {
 
   return (
     <>
-      <div className="relative overflow-x-auto">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -37,20 +37,20 @@ const TaskList: React.FC = () => {
       </div>
 
       <div
-        className="flex items-center flex-column flex-wrap md:flex-row justify-end pt-4"
+        className="flex items-center flex-column flex-wrap md:flex-row justify-end pt-4 gap-4"
         aria-label="Table navigation"
       >
         <button
           disabled={page === 1 ? true : false}
           onClick={() => setPage(page - 1)}
-          className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          className="text-gray-500 bg-white p-2 rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
         >
           Previous
         </button>
         <button
           onClick={() => setPage(page + 1)}
           disabled={tasks.pageNumber ? false : true}
-          className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          className="text-gray-500 bg-white p-2 rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
         >
           Next
         </button>
