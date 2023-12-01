@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { MainHeader } from ".";
 import { ConfirmModal, TaskList, TaskModal } from "..";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import BaseSpiner from "../common/BaseSpinner";
 
 const MainPage: React.FC = () => {
@@ -10,6 +12,7 @@ const MainPage: React.FC = () => {
       <Suspense fallback={<BaseSpiner />}>
         <TaskList />
       </Suspense>
+      <ReactQueryDevtools />
       <TaskModal />
       <ConfirmModal />
     </div>
