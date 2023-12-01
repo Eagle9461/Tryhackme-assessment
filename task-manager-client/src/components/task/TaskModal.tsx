@@ -64,7 +64,7 @@ const TaskModal: React.FC = () => {
             required={true}
             label="Description"
             register={register}
-            error={errors.title?.message}
+            error={errors.desc?.message}
           />
           <div className="flex items-start mb-5">
             <BaseToogle register={register} />
