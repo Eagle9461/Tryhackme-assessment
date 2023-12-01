@@ -15,9 +15,12 @@ class TaskRepository {
         return Task.findById(id);
     }
 
-    async update(id: string, taskData: Partial<ITask>): Promise<ITask | null> {
-        return Task.findByIdAndUpdate(id, taskData, { new: true });
-    }
+    async update(id: string, taskData: Partial<ITask>): Promise<ITask | null> {      
+        const updatedTaskData = { ...taskData };
+        delete updatedTaskData._id;
+      
+        return Task.findByIdAndUpdate(id, updatedTaskData, { new: true });
+      }
 
     async delete(id: string): Promise<ITask | null> {
       const result = await Task.findByIdAndDelete(id);
