@@ -7,13 +7,7 @@ const MainPage: React.FC = () => {
   return (
     <div className="container">
       <MainHeader />
-      <Suspense
-        fallback={
-          <div>
-            <BaseSpiner />
-          </div>
-        }
-      >
+      <Suspense fallback={<BaseSpiner />}>
         <TaskList />
       </Suspense>
       <TaskModal />
