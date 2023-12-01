@@ -1,5 +1,6 @@
 import { changeModalStatus, useAppDispatch } from "../../store";
 import { ITaskItemProps, TaskModalStatus } from "../../types";
+import { truncateSentence } from "../../utils";
 
 const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,7 @@ const TaskItem: React.FC<ITaskItemProps> = ({ task }) => {
         >
           {task.title}
         </th>
-        <td className="px-6 py-4">{task.desc}</td>
+        <td className="px-6 py-4">{truncateSentence(task.desc)}</td>
         <td className="px-6 py-4">
           <div className="flex items-center">
             <div
